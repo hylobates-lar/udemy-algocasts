@@ -42,8 +42,14 @@ class Tree {
         }
     }
 
-    traverseDF() {
+    traverseDF(fn) {
+        const arr = [this.root];
+        while (arr.length) {
+            const node = arr.shift(); // takes out first element of an array
 
+            arr.unshift(...node.children);// puts the children at the front of the array
+            fn(node);         
+        }
     }
 }
 
